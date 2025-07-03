@@ -1,5 +1,4 @@
-# Labeler
-# Knuckle Labeling Tools
+# Labeling Tools
 
 This repository contains two Python tools built with OpenCV to assist in manually labeling finger knuckle positions on hand images.
 
