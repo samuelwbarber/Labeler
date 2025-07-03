@@ -18,7 +18,7 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
     </td>
     <td align="center">
       <img src="images/pp-label.png" width="320" alt="Point Click Tool"/>
-      <br>Point Click Tool
+      <br>Output image
     </td>
   </tr>
 </table>
