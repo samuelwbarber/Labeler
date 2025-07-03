@@ -13,11 +13,11 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
 <table>
   <tr>
     <td align="center">
-      <img src="images/p-label.png" width="320" alt="Line Drawing Tool"/>
+      <img src="images/p-label.png" width="400" alt="Line Drawing Tool"/>
       <br>Line Drawing Tool
     </td>
     <td align="center">
-      <img src="images/pp-label.png" width="320" alt="Point Click Tool"/>
+      <img src="images/pp-label.png" width="400" alt="Point Click Tool"/>
       <br>Output image
     </td>
   </tr>
