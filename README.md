@@ -44,11 +44,11 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
 Click knuckle positions on hand images and save the coordinates in a JSON file.
 <table>
   <tr>
-
     <td align="center">
       <img src="images/k-label.png" width="400" alt="Line Drawing Tool"/>
       <br>Line Drawing Tool
     </td>
+
   </tr>
 </table>
 
