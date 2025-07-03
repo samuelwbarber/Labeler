@@ -7,9 +7,6 @@ This repository contains two Python tools built with OpenCV to assist in manuall
 
 ## 🖌️ 1. `Palm-labeler.py`
 
-**Purpose:**  
-Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anatomical features like fingers, bones, or knuckles.
-
 <table>
   <tr>
     <td align="center">
@@ -22,6 +19,9 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
     </td>
   </tr>
 </table>
+
+**Purpose:**  
+Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anatomical features like fingers, bones, or knuckles.
 
 **How It Works:**
 - Left-click and drag to draw lines.
@@ -40,8 +40,6 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
 
 ## 🖱️ 2. `Knuckle-labeler.py`
 
-**Purpose:**  
-Click knuckle positions on hand images and save the coordinates in a JSON file.
 <table>
   <tr>
     <td align="center">
@@ -51,6 +49,9 @@ Click knuckle positions on hand images and save the coordinates in a JSON file.
 
   </tr>
 </table>
+
+**Purpose:**  
+Click knuckle positions on hand images and save the coordinates in a JSON file.
 
 **How It Works:**
 - Left-click to place as many points as needed.
