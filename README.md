@@ -15,6 +15,7 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
 - After drawing 3 lines, the overlay is saved as a PNG mask.
 - Right-click also saves and manually advances to the next image.
 - Images are resized for display, but saved outputs match original image resolution.
+- Press 'Q' to quit
 
 **Key Features:**
 - 3-line color cycle (Red → Blue → Green)
@@ -29,7 +30,7 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
 Click knuckle positions on hand images and save the coordinates in a JSON file.
 
 **How It Works:**
-- Left-click to place as many points as needed (e.g., 5 knuckles).
+- Left-click to place as many points as needed.
 - Right-click saves the points for the current image and loads the next.
 - Coordinates are stored relative to the original image size.
 
