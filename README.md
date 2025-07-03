@@ -10,6 +10,19 @@ This repository contains two Python tools built with OpenCV to assist in manuall
 **Purpose:**  
 Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anatomical features like fingers, bones, or knuckles.
 
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/p-label.png" width="320" alt="Line Drawing Tool"/>
+      <br>Line Drawing Tool
+    </td>
+    <td align="center">
+      <img src="images/pp-label.png" width="320" alt="Point Click Tool"/>
+      <br>Point Click Tool
+    </td>
+  </tr>
+</table>
+
 **How It Works:**
 - Left-click and drag to draw lines.
 - After drawing 3 lines, the overlay is saved as a PNG mask.
@@ -23,6 +36,7 @@ Freehand draw 3 colored lines (Red, Blue, Green) on each image to annotate anato
 - Easy navigation and annotation per image
 
 ---
+
 
 ## 🖱️ 2. `Knuckle-labeler.py`
 
