@@ -1,0 +1,102 @@
+import cv2
+import os
+import json
+
+# ---------- Settings ----------
+image_path_template = r'C:\Users\sbarb\Image-Labeler\images\{:03d}_1.JPG'
+start_index = 115
+json_save_path = r'C:\Users\sbarb\Image-Labeler\knuckle_points.json'
+
+max_width = 800
+max_height = 600
+# ------------------------------
+
+knuckle_data = {}
+clicks = []
+image_index = start_index
+scale_factor = 1.0
+
+# Load existing data if available
+if os.path.exists(json_save_path):
+    with open(json_save_path, 'r') as f:
+        knuckle_data = json.load(f)
+
+def resize_image(img):
+    h, w = img.shape[:2]
+    scale = min(max_width / w, max_height / h, 1.0)
+    if scale < 1.0:
+        new_w = int(w * scale)
+        new_h = int(h * scale)
+        resized = cv2.resize(img, (new_w, new_h), interpolation=cv2.INTER_AREA)
+        return resized, scale
+    return img.copy(), 1.0
+
+def load_image(index):
+    path = image_path_template.format(index)
+    if os.path.exists(path):
+        img = cv2.imread(path)
+        resized, scale = resize_image(img)
+        return img, resized, scale, path
+    else:
+        print(f"[!] Image not found: {path}")
+        return None, None, None, None
+
+def mouse_callback(event, x, y, flags, param):
+    global clicks, image_index, scale_factor, image_display, image_original, image_path
+
+    if event == cv2.EVENT_LBUTTONDOWN:
+        x_orig = int(x / scale_factor)
+        y_orig = int(y / scale_factor)
+        clicks.append((x_orig, y_orig))
+        print(f"Point: ({x_orig}, {y_orig})")
+
+        # Draw marker
+        cv2.circle(image_display, (x, y), 4, (0, 0, 255), -1)
+        cv2.imshow("Click Points", image_display)
+
+    elif event == cv2.EVENT_RBUTTONDOWN:
+        if clicks:
+            filename = os.path.basename(image_path)
+            knuckle_data[filename] = clicks.copy()
+            with open(json_save_path, 'w') as f:
+                json.dump(knuckle_data, f, indent=2)
+            print(f"[✓] Saved {len(clicks)} points for {filename}")
+        else:
+            print(f"[!] No points to save for {os.path.basename(image_path)}")
+
+        # Reset and move to next image
+        clicks.clear()
+        image_index += 1
+
+        next_image, next_resized, next_scale, next_path = load_image(image_index)
+        if next_image is not None:
+            image_original = next_image
+            image_display[:] = next_resized
+            image_display = next_resized.copy()
+            scale_factor = next_scale
+            image_path = next_path
+            cv2.imshow("Click Points", image_display)
+        else:
+            print("No more images. Exiting.")
+            cv2.destroyAllWindows()
+
+# ---------- Main ----------
+image_original, image_display, scale_factor, image_path = load_image(image_index)
+if image_original is None:
+    raise FileNotFoundError(f"Image not found: {image_path_template.format(image_index)}")
+
+cv2.namedWindow("Click Points")
+cv2.setMouseCallback("Click Points", mouse_callback)
+cv2.imshow("Click Points", image_display)
+
+print("Left click to place points.")
+print("Right click to save and go to next image.")
+print("Press 'q' to quit.")
+
+while True:
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord('q'):
+        print("Quitting.")
+        break
+
+cv2.destroyAllWindows()
